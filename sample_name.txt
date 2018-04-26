@@ -1,0 +1,135 @@
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+1 shCTR
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
+1 shCTR
+1 shCTR
+1 shCTR
+2 shRB1 A
+2 shRB1 A
+2 shRB1 A
+3 shRB1 B
+3 shRB1 B
+3 shRB1 B
+4 shRB1 C
+4 shRB1 C
+4 shRB1 C
+5 shRB1 D
+5 shRB1 D
+5 shRB1 D
