@@ -4,9 +4,9 @@ class Line {
 
     private String sampleName;
     private String targetName;
-    private int ct;
+    private double ct;
     
-    public Line(String sampleName, String targetName, int ct) {
+    public Line(String sampleName, String targetName, double ct) {
     		this.sampleName = sampleName;
     		this.targetName = targetName;
     		this.ct = ct;
@@ -25,7 +25,7 @@ class Line {
         }
         this.targetName = targetName;
     }
-    public void setCt(int ct) {
+    public void setCt(double ct) {
         this.ct = ct;
     }
 
@@ -38,7 +38,7 @@ class Line {
         return targetName;
     }
     
-    public int getCt() {
+    public double getCt() {
         return ct;
     }
 }

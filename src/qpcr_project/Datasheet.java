@@ -9,7 +9,7 @@ import org.json.*;
 public class Datasheet {
 
 	private ArrayList<Line> excelData = new ArrayList<Line>();
-	
+
 	// constructor fills out exceData with information from the filename
 	public Datasheet(String filename) throws JSONException {
 		JSONArray jarr = createJsonArray(filename);
@@ -41,14 +41,14 @@ public class Datasheet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
-
 	/**
-	 * Creates JSONArray of given json-format file. To be used in
-	 * another function to create an arraylist of result objects.
+	 * Creates JSONArray of given json-format file. To be used in another function
+	 * to create an arraylist of result objects.
+	 * 
 	 * @param filename
 	 * @return JSONArray where each index is in a JSONobject format
 	 * @throws JSONException
@@ -56,38 +56,77 @@ public class Datasheet {
 	private static JSONArray createJsonArray(String filename) throws JSONException {
 		String jsonData = readFile(filename);
 		JSONArray jarr = new JSONArray(jsonData);
-//		for (int i = 0; i < jarr.length(); i++) {
-//			System.out.println(jarr.get(i));
-//		}
+		for (int i = 0; i < jarr.length(); i++) {
+			System.out.println(jarr.get(i));
+		}
 		return jarr;
-		
-//		JSONObject jobj = new JSONObject(jsonData);
-//		JSONArray jarr = new JSONArray(jobj.getJSONArray("keywords").toString());
-//		System.out.println("Name: " + jobj.getString("name"));
-//		for (int i = 0; i < jarr.length(); i++) {
-//			System.out.println("Keyword: " + jarr.getString(i));
-//		}
 	}
-	
+
 	/**
-	 * creates line objects from json objects and adds it to the arraylist
-	 * of lines to represent the exceldata
+	 * creates line objects from json objects and adds it to the arraylist of lines
+	 * to represent the exceldata
+	 * 
 	 * @param jobj
-	 * @throws JSONException 
+	 * @throws JSONException
 	 */
 	private void createLine(JSONObject jobj) throws JSONException {
-		Line line = new Line(jobj.getString("sample_name"), jobj.getString("target_name"), jobj.getInt("ct"));
+		Line line = new Line(jobj.getString("sample_name"), jobj.getString("target_name"), jobj.getDouble("ct"));
 		excelData.add(line);
 	}
 
+	/**
+	 * Calculate the mean of all entries for a given sampleName and targetName
+	 * @param sampleName
+	 * @param targetName
+	 * @return
+	 */
+	public double getMean(String sampleName, String targetName) {
+		// be sure to add exceptions for wrong strings
+		double sumCt = 0;
+		int count = 0;
+		for (Line line : excelData) {
+			if (line.getSampleName().equals(sampleName) && line.getTargetName().equals(targetName)) { // match found
+				sumCt += line.getCt();
+				count++;
+			}
+		}
+		return sumCt / count;
+	}
+	
+	/**
+	 * Calculate the standard deviation of all entries for a given sampleName and targetName
+	 * @param sampleName
+	 * @param targetName
+	 * @return
+	 */
+	public double getSD(String sampleName, String targetName) {
+		// be sure to add exceptions for wrong strings
+		double mean = getMean(sampleName, targetName);
+		double sd = 0;
+		int count = 0;
+		for (Line line : excelData) {
+			if (line.getSampleName().equals(sampleName) && line.getTargetName().equals(targetName)) { // match found
+				sd += Math.pow((mean - line.getCt()), 2);
+				count++;
+			}
+		}
+		sd = Math.sqrt(sd/(count-1));
+		return sd;
+	}
+	
 	// add the following functionalities using excelData:
-	// int calculate mean
-	// int calculate SD
 	// bool see if SD good enough
 	// analyze triplicate
 
+	// create class that uses this object and creates final result including
+	// replicate results
+	// 2 classes? replicate_line and storage<replicate_line>
+
 	public static void main(String args[]) throws JSONException {
-		// readFile("testdata.json");
-		// createJsonArray("testdata.json");
+		readFile("testdata.json");
+		createJsonArray("testdata.json");
+		Datasheet testObj = new Datasheet("testdata.json");
+		System.out.println(testObj.getMean("1 shCTR", "B-actin"));
+		System.out.println(testObj.getSD("1 shCTR", "B-actin"));
 	}
 }
