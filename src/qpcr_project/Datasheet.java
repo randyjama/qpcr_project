@@ -3,6 +3,7 @@ package qpcr_project;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 import org.json.*;
 
@@ -73,60 +74,41 @@ public class Datasheet {
 		Line line = new Line(jobj.getString("sample_name"), jobj.getString("target_name"), jobj.getDouble("ct"));
 		excelData.add(line);
 	}
-
-	/**
-	 * Calculate the mean of all entries for a given sampleName and targetName
-	 * @param sampleName
-	 * @param targetName
-	 * @return
-	 */
-	public double getMean(String sampleName, String targetName) {
-		// be sure to add exceptions for wrong strings
-		double sumCt = 0;
-		int count = 0;
-		for (Line line : excelData) {
-			if (line.getSampleName().equals(sampleName) && line.getTargetName().equals(targetName)) { // match found
-				sumCt += line.getCt();
-				count++;
-			}
-		}
-		return sumCt / count;
-	}
 	
 	/**
-	 * Calculate the standard deviation of all entries for a given sampleName and targetName
+	 * Returns an ArrayList<Double> containing all ct values for a given sampleName and targetName
 	 * @param sampleName
 	 * @param targetName
 	 * @return
 	 */
-	public double getSD(String sampleName, String targetName) {
-		// be sure to add exceptions for wrong strings
-		double mean = getMean(sampleName, targetName);
-		double sd = 0;
-		int count = 0;
+	public ArrayList<Double> getCtAll(String sampleName, String targetName) {
+		ArrayList<Double> ctAll = new ArrayList<Double>();
 		for (Line line : excelData) {
-			if (line.getSampleName().equals(sampleName) && line.getTargetName().equals(targetName)) { // match found
-				sd += Math.pow((mean - line.getCt()), 2);
-				count++;
+			if (line.getSampleName().equals(sampleName) && line.getTargetName().equals(targetName)) {
+				// if names match, add line's ct to ctAll
+				ctAll.add(line.getCt());
 			}
 		}
-		sd = Math.sqrt(sd/(count-1));
-		return sd;
+		return ctAll;
 	}
 	
 	// add the following functionalities using excelData:
 	// bool see if SD good enough
-	// analyze triplicate
 
 	// create class that uses this object and creates final result including
 	// replicate results
-	// 2 classes? replicate_line and storage<replicate_line>
+	// 2 classes? replicate_line (all data for one replicate)
+	// functions
+	// analyze triplicate
+	// and Arraylist<replicate_line>
 
 	public static void main(String args[]) throws JSONException {
 		readFile("testdata.json");
 		createJsonArray("testdata.json");
 		Datasheet testObj = new Datasheet("testdata.json");
-		System.out.println(testObj.getMean("1 shCTR", "B-actin"));
-		System.out.println(testObj.getSD("1 shCTR", "B-actin"));
+//		System.out.println(testObj.getMean("1 shCTR", "B-actin"));
+//		System.out.println(testObj.getSD("1 shCTR", "B-actin"));
+//		System.out.println(testObj.getSD("INCORRECT INPUT", "B-actin"));
+//		System.out.println(testObj.getSD("1 shCTR", "INCORRECT INPUT"));
 	}
 }
