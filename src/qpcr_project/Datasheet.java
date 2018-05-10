@@ -19,7 +19,7 @@ public class Datasheet {
 		}
 	}
 
-	// credit to https://www.thepolyglotdeveloper.com/2015/03/parse-json-file-java/
+	// partial credit to https://www.thepolyglotdeveloper.com/2015/03/parse-json-file-java/
 	/**
 	 * Reads the given file into a string
 	 * 
