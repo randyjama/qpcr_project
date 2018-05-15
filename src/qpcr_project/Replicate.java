@@ -17,14 +17,18 @@ public class Replicate {
 	private ArrayList<Double> ctAll = new ArrayList<Double>();
 	private double ctMean;
 	private double sd;
+	private Datasheet excelData;
 
-	public Replicate(String sampleName, String targetName) throws JSONException {
-		Datasheet excelData = new Datasheet("testdata.json");
+	public Replicate(String sampleName, String targetName, Datasheet datasheet) throws JSONException {
+		this.excelData = datasheet; // object passed by reference
+		// Datasheet excelData = new Datasheet("testdata.json");
 		this.sampleName = sampleName;
 		this.targetName = targetName;
 		this.ctAll = excelData.getCtAll(sampleName, targetName);
 		this.ctAll = removeCtOutliers(ctAll);
-		// once all ct's retrieved and filtered for smallest difference, calculate ctMean and sd
+
+		// once all ct's retrieved and filtered for smallest difference, calculate
+		// ctMean and sd
 		this.ctMean = calcMean(ctAll);
 		this.sd = calcSd(ctAll);
 	}
@@ -116,51 +120,57 @@ public class Replicate {
 	// partial credit to https://www.geeksforgeeks.org/find-minimum-difference-pair/
 	/**
 	 * Returns an array containing two values with the smallest difference.
-	 * @param ctAll Must not be empty or null
+	 * 
+	 * @param ctAll
+	 *            Must not be empty or null
 	 * @return
 	 */
-	private ArrayList<Double> removeCtOutliers (ArrayList<Double> ctAll){
-        // Initialize difference as infinite
+	private ArrayList<Double> removeCtOutliers(ArrayList<Double> ctAll) {
+		// Initialize difference as infinite
 		if (ctAll.isEmpty() || ctAll == null) {
 			throw new NoSuchElementException("ArrayList must not be empty or null.");
 		}
-        // ct1 and ct2 keep track of whatever values create the smallest difference
+		// ct1 and ct2 keep track of whatever values create the smallest difference
 		double ct1 = 0;
 		double ct2 = 0;
 		double diff = Integer.MAX_VALUE;
 		ArrayList<Double> result = new ArrayList<Double>();
-        
-        // for each value loop through remaining values to compare smallest difference. 
-        // Save the two indices that make that smallest difference.
-        for (int i = 0; i < ctAll.size() - 1; i++) {
-        		for (int j = i+1; j < ctAll.size(); j++) {
-        			//diff = (diff > Math.abs(ctAll.get(i) - ctAll.get(j))) ? Math.abs(ctAll.get(i) - ctAll.get(j)) : diff;
-        			if (diff > Math.abs(ctAll.get(i) - ctAll.get(j))){
-        				diff = Math.abs(ctAll.get(i) - ctAll.get(j));
-            			ct1 = ctAll.get(i);
-            			ct2 = ctAll.get(j);
-        			}
-        		}
-        }
-        
-        // Now return ArrayList only containing the smallest difference ct's
-        result.add(ct1);
-        result.add(ct2);
-        System.out.println(result.get(0));
-        System.out.println(result.get(1));
-        return result;
+
+		// for each value loop through remaining values to compare smallest difference.
+		// Save the two indices that make that smallest difference.
+		for (int i = 0; i < ctAll.size() - 1; i++) {
+			for (int j = i + 1; j < ctAll.size(); j++) {
+				// diff = (diff > Math.abs(ctAll.get(i) - ctAll.get(j))) ? Math.abs(ctAll.get(i)
+				// - ctAll.get(j)) : diff;
+				if (diff > Math.abs(ctAll.get(i) - ctAll.get(j))) {
+					diff = Math.abs(ctAll.get(i) - ctAll.get(j));
+					ct1 = ctAll.get(i);
+					ct2 = ctAll.get(j);
+				}
+			}
+		}
+
+		// Now return ArrayList only containing the smallest difference ct's
+		result.add(ct1);
+		result.add(ct2);
+//		System.out.println(result.get(0));
+//		System.out.println(result.get(1));
+		return result;
 	}
 
 	/*
 	 * add following functionality:
 	 * 
-	 * - see if sd good enough - remove outliers from ctAll[] - each replicate
-	 * object creates a Datasheet class containing the entire data of excel. See how
-	 * I should improve this
+	 * - Ask Daksh if I should still keep values where only 1 or 2 of the
+	 * triplicates are useable? - maybe have a prompt/warning that data is less
+	 * accurate if duplicates are used and if single value is risky. - object
+	 * creates a Datasheet class containing the entire data of excel. See how I
+	 * should improve this
 	 */
 
 	public static void main(String args[]) throws JSONException {
-		Replicate replicateTest = new Replicate("4 shRB1 C", "SYP");
+		Datasheet excelData = new Datasheet("testdata.json");
+		Replicate replicateTest = new Replicate("4 shRB1 C", "SYP", excelData);
 		System.out.println(replicateTest.getSampleName());
 		System.out.println(replicateTest.getTargetName());
 		System.out.println(replicateTest.getCtMean());

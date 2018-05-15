@@ -15,11 +15,42 @@ public class Datasheet {
 	public Datasheet(String filename) throws JSONException {
 		JSONArray jarr = createJsonArray(filename);
 		for (int i = 0; i < jarr.length(); i++) {
-			createLine(jarr.getJSONObject(i));
+			excelData.add(createLine(jarr.getJSONObject(i)));
+//			System.out.println(excelData.get(i).getSampleName() + ", " + excelData.get(i).getTargetName()
+//					+ ": " + excelData.get(i).getCt());
 		}
 	}
+	
+	// getters and setters for sampleName, targetName, and ct
+    public String getSampleName(int index) {
+        return excelData.get(index).getSampleName();
+    }
 
-	// partial credit to https://www.thepolyglotdeveloper.com/2015/03/parse-json-file-java/
+    public String getTargetName(int index) {
+    		return excelData.get(index).getTargetName();
+    }
+    
+    public double getCt(int index) {
+		return excelData.get(index).getCt();
+		}
+    public void setSampleName(String sampleName, int index) {
+        if (sampleName == null || sampleName == "") {
+          throw new RuntimeException("Name must not be empty.");
+        }
+        excelData.get(index).setSampleName(sampleName);
+    }
+    public void setTargetName(String targetName, int index) {
+        if (targetName == null || targetName == "") {
+          throw new RuntimeException("Name must not be empty.");
+        }
+        excelData.get(index).setTargetName(targetName);
+    }
+    public void setCt(double ct, int index) {
+        excelData.get(index).setCt(ct);
+    }
+
+	// partial credit to
+	// https://www.thepolyglotdeveloper.com/2015/03/parse-json-file-java/
 	/**
 	 * Reads the given file into a string
 	 * 
@@ -57,26 +88,28 @@ public class Datasheet {
 	private static JSONArray createJsonArray(String filename) throws JSONException {
 		String jsonData = readFile(filename);
 		JSONArray jarr = new JSONArray(jsonData);
-		for (int i = 0; i < jarr.length(); i++) {
-			System.out.println(jarr.get(i));
-		}
+//		for (int i = 0; i < jarr.length(); i++) {
+//			System.out.println(jarr.get(i));
+//		}
 		return jarr;
 	}
 
 	/**
-	 * creates line objects from json objects and adds it to the arraylist of lines
-	 * to represent the exceldata
+	 * Creates line objects from json objects
 	 * 
 	 * @param jobj
+	 * @return
 	 * @throws JSONException
 	 */
-	private void createLine(JSONObject jobj) throws JSONException {
+	private Line createLine(JSONObject jobj) throws JSONException {
 		Line line = new Line(jobj.getString("sample_name"), jobj.getString("target_name"), jobj.getDouble("ct"));
-		excelData.add(line);
+		return line;
 	}
-	
+
 	/**
-	 * Returns an ArrayList<Double> containing all ct values for a given sampleName and targetName
+	 * Returns an ArrayList<Double> containing all ct values for a given sampleName
+	 * and targetName
+	 * 
 	 * @param sampleName
 	 * @param targetName
 	 * @return
@@ -92,6 +125,10 @@ public class Datasheet {
 		return ctAll;
 	}
 	
+	public int size() {
+		return excelData.size();
+	}
+
 	// add the following functionalities using excelData:
 	// bool see if SD good enough
 
@@ -106,9 +143,9 @@ public class Datasheet {
 		readFile("testdata.json");
 		createJsonArray("testdata.json");
 		Datasheet testObj = new Datasheet("testdata.json");
-//		System.out.println(testObj.getMean("1 shCTR", "B-actin"));
-//		System.out.println(testObj.getSD("1 shCTR", "B-actin"));
-//		System.out.println(testObj.getSD("INCORRECT INPUT", "B-actin"));
-//		System.out.println(testObj.getSD("1 shCTR", "INCORRECT INPUT"));
+		// System.out.println(testObj.getMean("1 shCTR", "B-actin"));
+		// System.out.println(testObj.getSD("1 shCTR", "B-actin"));
+		// System.out.println(testObj.getSD("INCORRECT INPUT", "B-actin"));
+		// System.out.println(testObj.getSD("1 shCTR", "INCORRECT INPUT"));
 	}
 }

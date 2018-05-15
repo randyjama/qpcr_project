@@ -39,6 +39,6 @@ class Line {
     }
     
     public double getCt() {
-        return ct;
-    }
+		return ct;
+	}
 }
