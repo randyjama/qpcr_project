@@ -54,13 +54,48 @@ public class AnalyzedReplicates {
 			count++;
 		}
 		System.out.println(count);
+
+	}
+	
+	public int size() {
+		int count = 0;
+		for (int i = 0; i < analyzedReplicates.size(); i++) {
+			count++;
+		}
+		return count;
+	}
+	
+	public double getAvgCt(String sampleName, String targetName) {
+		for (int i = 0; i < analyzedReplicates.size(); i++) {
+			if (analyzedReplicates.get(i).getSampleName() == sampleName && analyzedReplicates.get(i).getTargetName() == targetName){
+				return analyzedReplicates.get(i).getCtMean();
+			}
+		}
+		return 0;
+	}
+	
+	public double getSD(String sampleName, String targetName) {
+		for (int i = 0; i < analyzedReplicates.size(); i++) {
+			if (analyzedReplicates.get(i).getSampleName() == sampleName && analyzedReplicates.get(i).getTargetName() == targetName){
+				return analyzedReplicates.get(i).getSd();
+			}
+		}
+		return 0;
 	}
 	
 	
-	// make function to check if replicate has <= 1 entries. If so, it cannot be
-	// used.
+	// getter
+	public String getSampleName(int index) {
+		return analyzedReplicates.get(index).getSampleName();
+	}
+	public String getTargetName(int index) {
+		return analyzedReplicates.get(index).getTargetName();
+	}
+	
+	// setter
 
 	public static void main(String args[]) throws JSONException {
 		AnalyzedReplicates tester = new AnalyzedReplicates("testdata.json");
+		System.out.println(tester.size());
 	}
 }
