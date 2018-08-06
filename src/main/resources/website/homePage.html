@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="functionality.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <!-- <script type="text/javascript" src="functionality.js">
+        test();
+    </script> -->
+<div class="flex-column" id="wrapper">
+        <div class="header">
+                <h1>Home Page</h1>
+            </div>
+    <div class="flex-row" id="nav">
+        <a class="homeButtons" href="homePage.html" target="_self">Home</a>
+        <a class="homeButtons" href="aboutProject.html" target="_self">About Project</a>
+        <a class="homeButtons" href="aboutCreator.html" target="_self">About Creator</a>
+    </div>
+    <div class="flex-container" id="form">
+        <form class="formArea">
+            <label>Paste Excel Data Below:</label>
+            <br>
+            <textarea class="textArea" id="data area" rows="10" cols="50" onfocus="this.value=''">Paste the following columns of qPCR data from Excel here: 
+Sample Name, Target Name, CT.
+
+Note: Do not include the title headers (for now at least).
+            </textarea>
+            <br>
+            <button type="button" onclick="test()">Convert Data</button>
+            <button onclick="document.getElementById('myInput').value = ''">Clear Input</button>
+        </form>
+    </div>
+    <p class="centeredBlock">This is the test home page. Eventually, there will be text boxes with instructions to insert your data from the qPCR results into 3 text boxes titled:
+    </p>
+    <ul class="list">
+        <li>Sample Name</li>
+        <li>Target/Gene Name</li>
+        <li>Concentration (CT)</li>
+    </ul>
+</div>
+</body>
+</html>

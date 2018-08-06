@@ -1,0 +1,96 @@
+:root {
+    --myGreen: #1abc9c;
+    --myGrey: #5c5c5c;
+}
+
+.list {
+    max-width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.header {
+    /* padding: 10px; some padding */
+    text-align: center; /* center the text */
+    background: var(--myGreen); /* green background */
+    color: white; /* white text color */
+    width: 100%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    /* flex-basis: 0; */
+}
+
+.flex-column {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* flex-basis: 0; */
+}
+
+#wrapper {
+    flex-direction: column;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0px; /*wyatt*/
+}
+/*
+.linkFormat {
+    font-family: Helvetica, Arial, sans-serif;
+}
+*/
+
+.formArea {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+textArea {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    vertical-align: center;
+    text-align: justify;
+}
+
+p {
+    padding: 20px 0px 20px 0px;
+    align-content: center;
+    text-align: justify;
+    
+}
+
+p.centeredBlock {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20em;
+}
+
+.homeButtons {
+    background-color: rgb(0,0,0);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 20px;
+    display: block; /* picks outermost border for alignment /*
+
+    /* text-transform: uppercase; */
+}
+
+.homeButtons:hover {
+    background-color: black;
+}
+
+.homeButtons:active {
+    background-color: var(--myGrey);
+}
+
+/* Increase the font size of the <h1> element */
+.header h1 {
+    font-size: 40px;
+}

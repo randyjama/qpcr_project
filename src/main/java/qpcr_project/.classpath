@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/randyjama/Google Drive/Projects/qpcr_project/qpcr_project/src/qpcr_project/spark-core-2.7.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

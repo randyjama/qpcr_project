@@ -45,15 +45,15 @@ public class AnalyzedReplicates {
 			}
 		}
 
-		int count = 0;
 		// print results of analyzedReplicates
-		for (int i = 0; i < analyzedReplicates.size(); i++) {
-			System.out.println(
-					analyzedReplicates.get(i).getSampleName() + ", " + analyzedReplicates.get(i).getTargetName() + ":\n"
-							+ analyzedReplicates.get(i).getCtMean() + ", " + analyzedReplicates.get(i).getSd() + "\n");
-			count++;
-		}
-		System.out.println(count);
+//		int count = 0;
+//		for (int i = 0; i < analyzedReplicates.size(); i++) {
+//			System.out.println(
+//					analyzedReplicates.get(i).getSampleName() + ", " + analyzedReplicates.get(i).getTargetName() + ":\n"
+//							+ analyzedReplicates.get(i).getCtMean() + ", " + analyzedReplicates.get(i).getSd() + "\n");
+//			count++;
+//		}
+//		System.out.println(count);
 
 	}
 	

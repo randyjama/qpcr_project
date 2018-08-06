@@ -58,7 +58,7 @@ public class GraphingDataLine {
 		// lineMap.put(this.sampleName, columnMap);
 	}
 	
-	// getter
+	// getters
 	public Double getColValue(String colName) {
 		return columnMap.get(colName);
 	}

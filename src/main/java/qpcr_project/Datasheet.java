@@ -12,9 +12,17 @@ public class Datasheet {
 	private ArrayList<Line> excelData = new ArrayList<Line>();
 
 	// constructor fills out exceData with information from the filename
-	public Datasheet(String filename) throws JSONException {
-		JSONArray jarr = createJsonArray(filename);
+	public Datasheet(String json) throws JSONException {
+		JSONArray jarr = createJsonArray(json);
 		for (int i = 0; i < jarr.length(); i++) {
+			try {
+				excelData.add(createLine(jarr.getJSONObject(i)));
+			} catch (JSONException e) { // catch normal exception and give Randy special exception
+				//TODO: handle exception
+				// add to the exception the failure line
+				throw e; // make own exception type and make all catches catch this exception type
+						// have the exception show the line number and what the issue is, maybe print the specific line
+			}
 			excelData.add(createLine(jarr.getJSONObject(i)));
 //			System.out.println(excelData.get(i).getSampleName() + ", " + excelData.get(i).getTargetName()
 //					+ ": " + excelData.get(i).getCt());
@@ -85,8 +93,8 @@ public class Datasheet {
 	 * @return JSONArray where each index is in a JSONobject format
 	 * @throws JSONException
 	 */
-	private static JSONArray createJsonArray(String filename) throws JSONException {
-		String jsonData = readFile(filename);
+	private static JSONArray createJsonArray(String jsonData) throws JSONException {
+		// String jsonData = readFile(filename);
 		JSONArray jarr = new JSONArray(jsonData);
 //		for (int i = 0; i < jarr.length(); i++) {
 //			System.out.println(jarr.get(i));
@@ -102,8 +110,18 @@ public class Datasheet {
 	 * @throws JSONException
 	 */
 	private Line createLine(JSONObject jobj) throws JSONException {
-		Line line = new Line(jobj.getString("sample_name"), jobj.getString("target_name"), jobj.getDouble("ct"));
-		return line;
+		try {
+			Line line = new Line(jobj.getString("SampleName"), jobj.getString("TargetName"), jobj.optDouble("CT"));
+			// put each category in it's own try catch block and throw the error that it is the specific one that's missing.
+			// or that the value is bad, etc. Also be sure they dont include the column headers
+			return line;
+		} catch (Exception e) {
+			//TODO: handle exception
+			System.out.println(jobj.toString());
+			throw e;
+		}
+		// Line line = new Line(jobj.getString("SampleName"), jobj.getString("TargetName"), jobj.optDouble("CT"));
+		// return line;
 	}
 
 	/**
@@ -140,8 +158,8 @@ public class Datasheet {
 	// and Arraylist<replicate_line>
 
 	public static void main(String args[]) throws JSONException {
-		readFile("testdata.json");
-		createJsonArray("testdata.json");
+		// readFile("testdata.json");
+		// createJsonArray("testdata.json");
 		Datasheet testObj = new Datasheet("testdata.json");
 		// System.out.println(testObj.getMean("1 shCTR", "B-actin"));
 		// System.out.println(testObj.getSD("1 shCTR", "B-actin"));
