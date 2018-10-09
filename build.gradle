@@ -12,7 +12,7 @@ plugins {
 
 sourceCompatibility = 1.8
 
-mainClassName = 'HelloSpark'
+mainClassName = 'qpcr_project.HelloSpark'
 
 repositories {
     mavenCentral()

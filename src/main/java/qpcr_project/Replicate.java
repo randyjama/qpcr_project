@@ -158,16 +158,6 @@ public class Replicate {
 		return result;
 	}
 
-	/*
-	 * add following functionality:
-	 * 
-	 * - Ask Daksh if I should still keep values where only 1 or 2 of the
-	 * triplicates are useable? - maybe have a prompt/warning that data is less
-	 * accurate if duplicates are used and if single value is risky. - object
-	 * creates a Datasheet class containing the entire data of excel. See how I
-	 * should improve this
-	 */
-
 	public static void main(String args[]) throws JSONException {
 		Datasheet excelData = new Datasheet("testdata.json");
 		Replicate replicateTest = new Replicate("4 shRB1 C", "SYP", excelData);

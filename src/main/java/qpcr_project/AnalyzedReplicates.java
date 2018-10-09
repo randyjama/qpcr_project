@@ -14,8 +14,8 @@ public class AnalyzedReplicates {
 
 	private ArrayList<Replicate> analyzedReplicates = new ArrayList<Replicate>();
 
-	public AnalyzedReplicates(String fileName) throws JSONException {
-		Datasheet excelData = new Datasheet(fileName);
+	public AnalyzedReplicates(String jsonExcel) throws JSONException {
+		Datasheet excelData = new Datasheet(jsonExcel);
 		analyzeResults(excelData, analyzedReplicates);
 	}
 
@@ -46,14 +46,14 @@ public class AnalyzedReplicates {
 		}
 
 		// print results of analyzedReplicates
-//		int count = 0;
-//		for (int i = 0; i < analyzedReplicates.size(); i++) {
-//			System.out.println(
-//					analyzedReplicates.get(i).getSampleName() + ", " + analyzedReplicates.get(i).getTargetName() + ":\n"
-//							+ analyzedReplicates.get(i).getCtMean() + ", " + analyzedReplicates.get(i).getSd() + "\n");
-//			count++;
-//		}
-//		System.out.println(count);
+		int count = 0;
+		for (int i = 0; i < analyzedReplicates.size(); i++) {
+			System.out.println(
+					analyzedReplicates.get(i).getSampleName() + ", " + analyzedReplicates.get(i).getTargetName() + ":\n"
+							+ analyzedReplicates.get(i).getCtMean() + ", " + analyzedReplicates.get(i).getSd() + "\n");
+			count++;
+		}
+		System.out.println(count);
 
 	}
 	

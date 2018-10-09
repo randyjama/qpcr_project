@@ -3,6 +3,8 @@ package qpcr_project;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.NoSuchElementException;
 
 import org.json.*;
@@ -23,9 +25,8 @@ public class Datasheet {
 				throw e; // make own exception type and make all catches catch this exception type
 						// have the exception show the line number and what the issue is, maybe print the specific line
 			}
-			excelData.add(createLine(jarr.getJSONObject(i)));
-//			System.out.println(excelData.get(i).getSampleName() + ", " + excelData.get(i).getTargetName()
-//					+ ": " + excelData.get(i).getCt());
+			System.out.println(excelData.get(i).getSampleName() + ", " + excelData.get(i).getTargetName()
+					+ ": " + excelData.get(i).getCt());
 		}
 	}
 	
@@ -142,20 +143,32 @@ public class Datasheet {
 		}
 		return ctAll;
 	}
+
+	/**
+	 * Returns a json list of all the genes (Target Names) in the datasheet
+	 * 
+	 * @param None
+	 * @return result A JSONArray of all the genes in the datasheet
+	 */
+	public JSONArray getAllGenes() {
+		// create unique LinkedHashSet to later iterate through to add to json array
+		// want to maintain order that user expects from qPCR plate layout
+		HashSet<String> uniqueSet = new LinkedHashSet<String>();
+		for (Line line : excelData) {
+			uniqueSet.add(line.getTargetName());
+		}
+		JSONArray result = new JSONArray();
+		for (String targetName : uniqueSet){
+			JSONObject obj = new JSONObject();
+			obj.put("name", targetName);
+			result.put(obj);
+		}
+		return result;
+	}
 	
 	public int size() {
 		return excelData.size();
 	}
-
-	// add the following functionalities using excelData:
-	// bool see if SD good enough
-
-	// create class that uses this object and creates final result including
-	// replicate results
-	// 2 classes? replicate_line (all data for one replicate)
-	// functions
-	// analyze triplicate
-	// and Arraylist<replicate_line>
 
 	public static void main(String args[]) throws JSONException {
 		// readFile("testdata.json");
@@ -165,5 +178,6 @@ public class Datasheet {
 		// System.out.println(testObj.getSD("1 shCTR", "B-actin"));
 		// System.out.println(testObj.getSD("INCORRECT INPUT", "B-actin"));
 		// System.out.println(testObj.getSD("1 shCTR", "INCORRECT INPUT"));
+		// System.out.println(testObj.getAllGenes());
 	}
 }

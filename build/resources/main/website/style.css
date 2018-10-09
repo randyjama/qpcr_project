@@ -1,5 +1,5 @@
 :root {
-    --myGreen: #1abc9c;
+    --myGreen: #017592;
     --myGrey: #5c5c5c;
 }
 
@@ -32,9 +32,9 @@
     /* flex-basis: 0; */
 }
 
-#wrapper {
+/* #wrapper {
     flex-direction: column;
-}
+} */
 
 body {
     font-family: Helvetica, Arial, sans-serif;
@@ -46,17 +46,28 @@ body {
 }
 */
 
-.formArea {
+/* .formArea {
     display: block;
     padding-top: 10px;
     padding-bottom: 10px;
+} */
+
+.textArea {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    vertical-align: center;
+    text-align: center;
+    resize: none;
 }
 
-textArea {
+.labelFont {
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 10pt;
-    vertical-align: center;
-    text-align: justify;
+    font-size: 20px;
+    text-align: center;
+    /* width: 300px; */
+    margin-top: 20px;
+    /* margin-bottom: 20px; */
+    display: block;
 }
 
 p {
@@ -66,7 +77,7 @@ p {
     
 }
 
-p.centeredBlock {
+p.centeredParagraph {
     margin-left: auto;
     margin-right: auto;
     width: 20em;
@@ -83,7 +94,7 @@ p.centeredBlock {
 }
 
 .homeButtons:hover {
-    background-color: black;
+    background-color: var(--myGreen);
 }
 
 .homeButtons:active {
@@ -94,3 +105,40 @@ p.centeredBlock {
 .header h1 {
     font-size: 40px;
 }
+
+.itemCenter {
+    /* vertical-align: center;
+    align-content: center; */
+    justify-content: center;
+}
+
+#ctrForm {
+    height: 200px;
+    width: 150px;
+    margin-top: 20px;
+}
+
+#dataArea {
+    /* white-space: nowrap; */
+}
+
+/* #ctrLabel {
+    justify-content: center;
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#inputLabel {
+    justify-content: center;
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#outputLabel {
+    justify-content: center;
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+} */

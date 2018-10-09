@@ -23,8 +23,8 @@ public class GraphingDataLine {
 	private double rqErrDown;
 	private double rqErrUp;
 
-	// GOI avg Ct GOI stdev ref avg Ct ref s tdev #VALUE! st err ^^Ct err down err
-	// up RQ err down err up
+	// GOI avg Ct GOI stdev ref avg Ct ref s tdev #VALUE! st err ^^Ct err down err up
+	// RQ err down err up
 	public GraphingDataLine(String sampleName, double goiAvgCt, double goiStDev, double refAvgCt, double refStDev,
 			double value, double stErr, double ct, double ctErrDown, double ctErrUp, double rq, double rqErrDown,
 			double rqErrUp) {
@@ -55,6 +55,9 @@ public class GraphingDataLine {
 		columnMap.put("rqErrDown", this.rqErrDown);
 		columnMap.put("rqErrUp", this.rqErrUp);
 		
+		// System.out.println(this.sampleName + ", " + this.goiAvgCt + ", " + this.goiStDev + ", " + this.refAvgCt + ", " + this.refAvgCt + ", " + this.refStDev
+		// + ", " +  this.value + ", " + this.stErr + ", " + this.ct + ", " +  this.ctErrDown + ", " + this.ctErrUp + ", " + this.rq + ", " + this.rqErrDown
+		// + ", " + this.rqErrUp);
 		// lineMap.put(this.sampleName, columnMap);
 	}
 	

@@ -78,6 +78,10 @@ public class GraphingDataGeneCtrPair {
 			double rqErrDown = rq - Math.pow(2, -1 * ctErrDown);
 			double rqErrUp = Math.pow(2, -1 * ctErrUp) - rq;
 
+			// System.out.println(sampleNameArr.get(i) + ", " + geneCtArr.get(i) + ", " + geneSDArr.get(i) + ", " + ctrCtArr.get(i) + ", " + ctrSDArr.get(i) + ", "
+			// + ", " +  value + ", " + stErr + ", " + ct + ", " +  ctErrDown + ", " + ctErrUp + ", " + rq + ", " + rqErrDown
+			// + ", " + rqErrUp);
+
 			GraphingDataLine line = new GraphingDataLine(sampleNameArr.get(i), geneCtArr.get(i), geneSDArr.get(i),
 					ctrCtArr.get(i), ctrSDArr.get(i), value, stErr, ct, ctErrDown, ctErrUp, rq, rqErrDown, rqErrUp);
 
@@ -96,6 +100,10 @@ public class GraphingDataGeneCtrPair {
 	
 	public GraphingDataLine getGraphingDataLine (int index) {
 		return data.get(index);
+	}
+	
+	public ArrayList<GraphingDataLine> getGraphingData() {
+		return data;
 	}
 
 	public static void main(String args[]) throws JSONException {
