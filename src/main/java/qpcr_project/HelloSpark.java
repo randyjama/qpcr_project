@@ -7,11 +7,19 @@ import org.json.JSONObject;
 import qpcr_project.*;
 import spark.Request;
 import spark.Response;
+import spark.ModelAndView;
+import java.util.HashMap;
+
 
 public class HelloSpark {
 	public static void main(String[] args) {
+		port(80);
 		staticFileLocation("/website");
-		get("/", (req, res) -> "/website/homePage.html");
+		//get("/", (req, res) -> "/website/homePage.html");
+		get("/", (req, res) -> {
+			res.redirect("homePage.html"); return null;
+		});
+		// get("/", (req, res) -> new ModelAndView(new HashMap(), "../website/homePage.html"), new ThymeleafTemplateEngine());
 		post("/firstClick", (req, res) -> processData(req, res)); // initial request from user to return ctr selection choices
 		post("/secondClick", (req, res) -> packageData(req, res)); // second request from user after ctr selection to return processed data (as json)
 		// js is downloaded from the website and run locally on browser
