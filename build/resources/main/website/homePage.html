@@ -7,13 +7,9 @@
     <title>Home Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
 
 <body>
-    <!-- <script type="text/javascript" src="functionality.js">
-        test();
-    </script> -->
     <div class="flex-column">
         <div class="header">
             <h1>quantifyPCR</h1>
@@ -24,37 +20,51 @@
             <a class="homeButtons" href="aboutCreator.html" target="_self">About Creator</a>
         </div>
         <div class="flex-container flex-row">
-            <form class="formArea itemCenter" id="inputform">
-                <label class="labelFont" id="inputLabel">1) Paste Excel Data Below:</label>
+            <!-- Input Form -->
+            <form class="flex-container flex-column formArea" id="inputform">
+                <div class="numberCircle">1</div>
+                <label class="labelFont" id="inputLabel">Paste Excel Data Below:</label>
                 <br>
-                <textarea class="textArea" wrap="off" id="data area" rows="10" cols="50" onfocus="this.value=''">Paste the following columns of qPCR data from Excel here: 
-Sample Name, Target Name, CT
+                <textarea class="textArea" wrap="off" id="data area" rows="10" cols="50" onfocus="this.value=''">
 
-Note: Do not include the title headers.
-                </textarea>
+
+
+Paste the following columns of qPCR data from Excel here: 
+Sample Name, Target Name, CT 
+
+Note: Do not include the title headers.</textarea>
                 <br>
-                <div class="flex-row itemCenter" id="form">
-                        <button class="textArea" type="button" onclick="test()">Convert Data</button>
-                        <button class="textArea" onclick="document.getElementById('myInput').value = ''">Clear Input</button>
+                <div class="flex-row" id="form">
+                    <button class="textArea" type="button" onclick="test()">Convert Data</button>
+                    <button class="textArea" onclick="document.getElementById('myInput').value = ''">Clear Input</button>
                 </div>
             </form>
-            <div class="flex-column itemCenter">
-                <label class="labelFont" id="ctrLabel">2) Select control genes:</label>
-                <select multiple class="textArea itemCenter" id="ctrForm" required>
+            <!-- Ctr Selection Form -->
+            <form class="flex-container flex-column formArea">
+                <div class="numberCircle">2</div>
+                <label class="labelFont" id="ctrLabel">Select control genes:</label>
+                <br>
+                <select multiple class="textArea itemCenter" id="ctrForm" required></select>
+                <br>
+                <button class="textArea" id="ctrFormButton" onclick="getCtrs(document.getElementsByTagName('select')[0])">Submit Controls</button>
+            </form>
+            <!-- Output Form -->
+            <form class="flex-container flex-column formArea" id="outputForm">
+                <div class="numberCircle">3</div>
+                <label class="labelFont" id="outputLabel">Copy Data Below Into Excel:</label>
+                <br>
+                <textarea class="textArea" wrap="off" id="dataArea" rows="10" cols="50" onfocus="this.value=''">
+                    
 
-                </select> <br>
-            <button class="textArea" id="ctrFormButton" onclick="
-                getCtrs(document.getElementsByTagName('select')[0]);
-                ">Submit Controls
-            </button>
-            </div class="itemCenter">
-            <form class="formArea" id="outputForm">
-                <label class="labelFont" id="outputLabel">3) Copy Data Below Into Excel:</label>
+
+
+
+Copy and paste data that appears in this box into Excel.</textarea>
                 <br>
-                <textarea class="textArea" wrap="off" id="dataArea" rows="10" cols="50">Copy and paste all data that appaers in this box into Excel.
-                </textarea>
-                <br>
-                <button class="textArea itemCenter" type="button" onclick="copyText()">Copy Text</button>
+                <div class="flex-row" id="form">
+                    <button class="textArea" type="button" onclick="copyText()">Copy Text</button>
+                    <button class="textArea" onclick="document.getElementById('myInput').value = ''">Clear Output</button>
+                </div>
             </form>
         </div>
         <p class="centeredParagraph">This is the test home page. Eventually, there will be text boxes with instructions to insert your data from the qPCR results into 3 text boxes titled:
@@ -66,5 +76,5 @@ Note: Do not include the title headers.
         </ul>
     </div>
 </body>
-<!-- onfocus="this.value=''"-->
+
 </html>
