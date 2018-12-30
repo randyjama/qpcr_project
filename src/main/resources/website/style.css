@@ -72,10 +72,10 @@ body {
 }
 
 p {
-    padding: 20px 0px 20px 0px;
-    align-content: center;
+    /* padding: 20px 0px 20px 0px; */
     text-align: justify;
-    
+    width: 400px;
+    align-content: stretch
 }
 
 p.centeredParagraph {
@@ -169,4 +169,12 @@ p.centeredParagraph {
 
 .actionButton:active {
     background-color: var(--myGrey);
+}
+
+.profilePicture {
+    width: 400px;
+    border-width: 2px;
+    border-color: #000000;
+    border-style: solid;
+    border-radius: 20px;
 }
