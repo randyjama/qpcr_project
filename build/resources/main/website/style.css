@@ -20,6 +20,7 @@
 .flex-row {
     display: flex;
     flex-direction: row;
+    align-items: center;
     /* flex-grow: 1; */
     /* flex-basis: 0; */
 }
@@ -87,9 +88,14 @@ p.centeredParagraph {
     background-color: rgb(0,0,0);
     color: rgb(255, 255, 255);
     text-decoration: none;
-    padding: 20px;
-    display: block; /* picks outermost border for alignment /*
-
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 150px;
+    font-weight: 100px;
+    font-size: 20px;
+    display: block; /* picks outermost border for alignment */
+    border: solid #000000 2px;
+    
     /* text-transform: uppercase; */
 }
 
@@ -135,4 +141,32 @@ p.centeredParagraph {
     text-align: center;
     
     font: 32px Arial, sans-serif;
+}
+
+.actionButton {
+    /* -webkit-border-radius: 20px;
+    -moz-border-radius: 20px; */
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 200px;
+    width: 150px;
+    padding: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color: rgb(0,0,0);
+    cursor: pointer;
+    border: solid #000000 2px;
+    text-decoration: none;
+    display: inline-block;
+}
+    
+.actionButton:hover {
+    background-color: var(--myBlue);
+    transition: 0.3s;
+}
+
+.actionButton:active {
+    background-color: var(--myGrey);
 }

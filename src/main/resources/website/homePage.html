@@ -15,9 +15,9 @@
             <h1>quantifyPCR</h1>
         </div>
         <div class="flex-row" id="nav">
-            <a class="homeButtons" href="homePage.html" target="_self">Home</a>
-            <a class="homeButtons" href="aboutProject.html" target="_self">About Project</a>
-            <a class="homeButtons" href="aboutCreator.html" target="_self">About Creator</a>
+            <a class="homeButtons textArea" href="homePage.html" target="_self">Home Page</a>
+            <a class="homeButtons textArea" href="aboutProject.html" target="_self">About Project</a>
+            <a class="homeButtons textArea" href="aboutCreator.html" target="_self">About Creator</a>
         </div>
         <div class="flex-container flex-row">
             <!-- Input Form -->
@@ -35,8 +35,8 @@ Sample Name, Target Name, CT
 Note: Do not include the title headers.</textarea>
                 <br>
                 <div class="flex-row" id="form">
-                    <button class="textArea" type="button" onclick="test()">Convert Data</button>
-                    <button class="textArea" onclick="document.getElementById('myInput').value = ''">Clear Input</button>
+                    <button class="textArea actionButton" type="button" onclick="test()">Convert Data</button>
+                    <button class="textArea actionButton" onclick="document.getElementById('myInput').value = ''">Clear Input</button>
                 </div>
             </form>
             <!-- Ctr Selection Form -->
@@ -46,7 +46,7 @@ Note: Do not include the title headers.</textarea>
                 <br>
                 <select multiple class="textArea itemCenter" id="ctrForm" required></select>
                 <br>
-                <button class="textArea" id="ctrFormButton" onclick="getCtrs(document.getElementsByTagName('select')[0])">Submit Controls</button>
+                <button class="textArea actionButton" id="ctrFormButton" onclick="getCtrs(document.getElementsByTagName('select')[0])">Submit Controls</button>
             </form>
             <!-- Output Form -->
             <form class="flex-container flex-column formArea" id="outputForm">
@@ -62,8 +62,8 @@ Note: Do not include the title headers.</textarea>
 Copy and paste data that appears in this box into Excel.</textarea>
                 <br>
                 <div class="flex-row" id="form">
-                    <button class="textArea" type="button" onclick="copyText()">Copy Text</button>
-                    <button class="textArea" onclick="document.getElementById('myInput').value = ''">Clear Output</button>
+                    <button class="textArea actionButton" type="button" onclick="copyText()">Copy Text</button>
+                    <button class="textArea actionButton" onclick="document.getElementById('myInput').value = ''">Clear Output</button>
                 </div>
             </form>
         </div>
