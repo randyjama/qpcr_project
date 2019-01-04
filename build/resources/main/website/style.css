@@ -4,7 +4,7 @@
 }
 
 .list {
-    max-width: 200px;
+    max-width: 600px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -176,5 +176,13 @@ p.centeredParagraph {
     border-width: 2px;
     border-color: #000000;
     border-style: solid;
-    border-radius: 20px;
+    /* border-radius: 20px; */
+}
+
+.demoGif {
+    width: 800px;
+    border-width: 2px;
+    border-color: #000000;
+    border-style: solid;
+    /* border-radius: 20px; */
 }
